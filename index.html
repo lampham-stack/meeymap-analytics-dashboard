@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marketing Analytics Dashboard - P&L & Conversion Analysis</title>
+    <meta name="description"
+        content="Professional marketing analytics dashboard for P&L analysis, ROAS tracking, and conversion funnel optimization">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="index.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <svg class="brand-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                    <path d="M3 3v18h18" stroke-width="2" stroke-linecap="round" />
+                    <path d="M18 9l-5 5-3-3-4 4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+                <span class="brand-text">Marketing Analytics</span>
+            </div>
+            <div class="nav-tabs">
+                <button class="nav-tab active" data-page="page1">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <rect x="3" y="3" width="18" height="18" rx="2" stroke-width="2" />
+                        <path d="M9 3v18M3 9h18M3 15h6" stroke-width="2" />
+                    </svg>
+                    P&L & Marketing Efficiency
+                </button>
+                <button class="nav-tab" data-page="page2">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <path d="M12 2L2 7l10 5 10-5-10-5z" stroke-width="2" stroke-linejoin="round" />
+                        <path d="M2 17l10 5 10-5M2 12l10 5 10-5" stroke-width="2" stroke-linejoin="round" />
+                    </svg>
+                    Conversion Funnel
+                </button>
+                <button class="nav-tab" data-page="page3">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" stroke-width="2" stroke-linecap="round" />
+                        <circle cx="9" cy="7" r="4" stroke-width="2" />
+                        <path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75" stroke-width="2"
+                            stroke-linecap="round" />
+                    </svg>
+                    User Insights
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page 1: P&L & Marketing Efficiency -->
+    <div class="page active" id="page1">
+        <div class="page-container">
+            <div class="page-header">
+                <h1>P&L & Marketing Efficiency</h1>
+                <p class="page-subtitle">Phân tích Lỗ/Lãi & Hiệu quả chi phí Marketing</p>
+            </div>
+
+            <!-- KPI Cards -->
+            <div class="kpi-grid">
+                <div class="kpi-card">
+                    <div class="kpi-icon profit">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" stroke-width="2"
+                                stroke-linecap="round" />
+                        </svg>
+                    </div>
+                    <div class="kpi-content">
+                        <div class="kpi-label">Net Profit/Loss (Revenue - UA Cost)</div>
+                        <div class="kpi-value profit-value" id="netProfit">+$545,890</div>
+                        <div class="kpi-change positive">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                <path d="M18 15l-6-6-6 6" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                            </svg>
+                            <span>+12.5% vs tháng trước</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="kpi-card">
+                    <div class="kpi-icon roas">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <circle cx="12" cy="12" r="10" stroke-width="2" />
+                            <path d="M12 6v6l4 2" stroke-width="2" stroke-linecap="round" />
+                        </svg>
+                    </div>
+                    <div class="kpi-content">
+                        <div class="kpi-label">ROAS (Revenue / UA Spend)</div>
+                        <div class="kpi-value" id="roas">2.8x</div>
+                        <div class="kpi-change positive">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                <path d="M18 15l-6-6-6 6" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                            </svg>
+                            <span>+0.3x vs tháng trước</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="kpi-card">
+                    <div class="kpi-icon mer">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <path d="M3 3v18h18" stroke-width="2" stroke-linecap="round" />
+                            <path d="M7 12l3-3 4 4 5-5" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" />
+                        </svg>
+                    </div>
+                    <div class="kpi-content">
+                        <div class="kpi-label">CPI (Cost Per Install)</div>
+                        <div class="kpi-value" id="mer">$2.85</div>
+                        <div class="kpi-change negative">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                <path d="M6 9l6 6 6-6" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                            </svg>
+                            <span>+$0.15 vs tháng trước</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Charts Grid -->
+            <div class="charts-grid">
+                <div class="chart-card large">
+                    <div class="chart-header">
+                        <h2>Waterfall Chart - Phân tích dòng tiền</h2>
+                        <p>Revenue (IAP + Ads) - UA Cost từng kênh = Net Profit</p>
+                    </div>
+                    <div class="chart-container">
+                        <canvas id="waterfallChart"></canvas>
+                    </div>
+                </div>
+
+                <div class="chart-card large">
+                    <div class="chart-header">
+                        <h2>Revenue vs UA Spend - Trend Analysis</h2>
+                        <p>Khoảng cách (Gap) giữa 2 đường = Net Profit margin</p>
+                    </div>
+                    <div class="chart-container">
+                        <canvas id="trendChart"></canvas>
+                    </div>
+                </div>
+
+                <div class="chart-card">
+                    <div class="chart-header">
+                        <h2>ROAS theo kênh UA</h2>
+                        <p>So sánh hiệu quả từng kênh User Acquisition</p>
+                    </div>
+                    <div class="chart-container">
+                        <canvas id="roasChannelChart"></canvas>
+                    </div>
+                </div>
+
+                <div class="chart-card">
+                    <div class="chart-header">
+                        <h2>UA Spend Breakdown</h2>
+                        <p>Phân bổ ngân sách User Acquisition theo kênh</p>
+                    </div>
+                    <div class="chart-container">
+                        <canvas id="costBreakdownChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Page 2: Customer Acquisition & Conversion Funnel -->
+    <div class="page" id="page2">
+        <div class="page-container">
+            <div class="page-header">
+                <h1>Customer Acquisition & Conversion Funnel</h1>
+                <p class="page-subtitle">Phân tích phễu chuyển đổi & Hiệu quả nguồn khách hàng</p>
+            </div>
+
+            <!-- KPI Cards -->
+            <div class="kpi-grid">
+                <div class="kpi-card">
+                    <div class="kpi-icon cac">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" stroke-width="2"
+                                stroke-linecap="round" />
+                            <circle cx="12" cy="7" r="4" stroke-width="2" />
+                        </svg>
+                    </div>
+                    <div class="kpi-content">
+                        <div class="kpi-label">CAC (Cost Per Acquisition)</div>
+                        <div class="kpi-value" id="cac">$28.50</div>
+                        <div class="kpi-change negative">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                <path d="M6 9l6 6 6-6" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                            </svg>
+                            <span>+$3.2 vs tháng trước</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="kpi-card">
+                    <div class="kpi-icon conversion">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <path d="M22 12h-4l-3 9L9 3l-3 9H2" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" />
+                        </svg>
+                    </div>
+                    <div class="kpi-content">
+                        <div class="kpi-label">Overall Conversion Rate</div>
+                        <div class="kpi-value" id="overallCR">3.2%</div>
+                        <div class="kpi-change positive">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                <path d="M18 15l-6-6-6 6" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                            </svg>
+                            <span>+0.5% vs tháng trước</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="kpi-card">
+                    <div class="kpi-icon traffic">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" stroke-width="2"
+                                stroke-linecap="round" />
+                            <circle cx="9" cy="7" r="4" stroke-width="2" />
+                            <path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75" stroke-width="2"
+                                stroke-linecap="round" />
+                        </svg>
+                    </div>
+                    <div class="kpi-content">
+                        <div class="kpi-label">Total Traffic</div>
+                        <div class="kpi-value" id="totalTraffic">125,430</div>
+                        <div class="kpi-change positive">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                <path d="M18 15l-6-6-6 6" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                            </svg>
+                            <span>+8.3% vs tháng trước</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Charts Grid -->
+            <div class="charts-grid">
+                <div class="chart-card large">
+                    <div class="chart-header">
+                        <h2>App Install Funnel - Phễu chuyển đổi</h2>
+                        <p>Tìm "điểm gãy" trong hành trình: Impressions → Clicks → Installs → Paid Users</p>
+                    </div>
+                    <div class="chart-container">
+                        <canvas id="funnelChart"></canvas>
+                    </div>
+                </div>
+
+                <div class="chart-card large">
+                    <div class="chart-header">
+                        <h2>Source/Medium Performance Matrix</h2>
+                        <p>4 vùng chiến lược: Dồn tiền | Tối ưu | Thử nghiệm | Cắt bỏ</p>
+                    </div>
+                    <div class="performance-matrix">
+                        <div class="matrix-labels">
+                            <div class="y-label">Conversion Rate (%)</div>
+                            <div class="x-label">Chi phí trung bình ($)</div>
+                        </div>
+                        <div class="matrix-container">
+                            <canvas id="performanceMatrix"></canvas>
+                        </div>
+                        <div class="matrix-legend">
+                            <div class="legend-item zone1">
+                                <span class="legend-dot"></span>
+                                <span>Vùng 1: Dồn thêm tiền</span>
+                            </div>
+                            <div class="legend-item zone2">
+                                <span class="legend-dot"></span>
+                                <span>Vùng 2: Tối ưu nội dung</span>
+                            </div>
+                            <div class="legend-item zone3">
+                                <span class="legend-dot"></span>
+                                <span>Vùng 3: Thử nghiệm</span>
+                            </div>
+                            <div class="legend-item zone4">
+                                <span class="legend-dot"></span>
+                                <span>Vùng 4: Cắt bỏ ngay</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="chart-card">
+                    <div class="chart-header">
+                        <h2>Conversion Rate từng bước</h2>
+                        <p>Impression → Click → Install → Register → Active → Paid</p>
+                    </div>
+                    <div class="chart-container">
+                        <canvas id="stepConversionChart"></canvas>
+                    </div>
+                </div>
+
+                <div class="chart-card">
+                    <div class="chart-header">
+                        <h2>Top Install Sources</h2>
+                        <p>Nguồn install chính theo volume</p>
+                    </div>
+                    <div class="chart-container">
+                        <canvas id="trafficSourceChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Page 3: User Demographics & Behavior -->
+    <div class="page" id="page3">
+        <div class="page-container">
+            <div class="page-header">
+                <h1>User Demographics & Behavior Insights</h1>
+                <p class="page-subtitle">Phân tích chi tiết về Độ tuổi, Giới tính, Hành vi người dùng</p>
+            </div>
+
+            <!-- KPI Cards -->
+            <div class="kpi-grid">
+                <div class="kpi-card">
+                    <div class="kpi-icon" style="background: rgba(99, 102, 241, 0.1); color: rgb(99, 102, 241);">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" stroke-width="2"
+                                stroke-linecap="round" />
+                            <circle cx="9" cy="7" r="4" stroke-width="2" />
+                            <path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75" stroke-width="2"
+                                stroke-linecap="round" />
+                        </svg>
+                    </div>
+                    <div class="kpi-content">
+                        <div class="kpi-label">Total Active Users</div>
+                        <div class="kpi-value" id="totalUsers">18,650</div>
+                        <div class="kpi-change positive">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                <path d="M18 15l-6-6-6 6" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                            </svg>
+                            <span>+15.2% vs tháng trước</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="kpi-card">
+                    <div class="kpi-icon" style="background: rgba(236, 72, 153, 0.1); color: rgb(236, 72, 153);">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <circle cx="12" cy="12" r="10" stroke-width="2" />
+                            <path d="M12 6v6l4 2" stroke-width="2" stroke-linecap="round" />
+                        </svg>
+                    </div>
+                    <div class="kpi-content">
+                        <div class="kpi-label">Avg Session Duration</div>
+                        <div class="kpi-value" id="avgSession">8m 32s</div>
+                        <div class="kpi-change positive">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                <path d="M18 15l-6-6-6 6" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                            </svg>
+                            <span>+45s vs tháng trước</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="kpi-card">
+                    <div class="kpi-icon" style="background: rgba(16, 185, 129, 0.1); color: rgb(16, 185, 129);">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <path d="M22 12h-4l-3 9L9 3l-3 9H2" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" />
+                        </svg>
+                    </div>
+                    <div class="kpi-content">
+                        <div class="kpi-label">Day 7 Retention Rate</div>
+                        <div class="kpi-value" id="retention">42.8%</div>
+                        <div class="kpi-change positive">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                <path d="M18 15l-6-6-6 6" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                            </svg>
+                            <span>+3.2% vs tháng trước</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Charts Grid -->
+            <div class="charts-grid">
+                <div class="chart-card">
+                    <div class="chart-header">
+                        <h2>Phân bố theo Độ tuổi</h2>
+                        <p>User distribution by age groups</p>
+                    </div>
+                    <div class="chart-container">
+                        <canvas id="ageDistributionChart"></canvas>
+                    </div>
+                </div>
+
+                <div class="chart-card">
+                    <div class="chart-header">
+                        <h2>Phân bố theo Giới tính</h2>
+                        <p>Gender breakdown của user base</p>
+                    </div>
+                    <div class="chart-container">
+                        <canvas id="genderChart"></canvas>
+                    </div>
+                </div>
+
+                <div class="chart-card large">
+                    <div class="chart-header">
+                        <h2>Hành vi sử dụng theo giờ trong ngày</h2>
+                        <p>Peak hours và engagement patterns</p>
+                    </div>
+                    <div class="chart-container">
+                        <canvas id="hourlyBehaviorChart"></canvas>
+                    </div>
+                </div>
+
+                <div class="chart-card">
+                    <div class="chart-header">
+                        <h2>Session Duration Distribution</h2>
+                        <p>Phân bố thời gian sử dụng app</p>
+                    </div>
+                    <div class="chart-container">
+                        <canvas id="sessionDurationChart"></canvas>
+                    </div>
+                </div>
+
+                <div class="chart-card">
+                    <div class="chart-header">
+                        <h2>Device Type Usage</h2>
+                        <p>iOS vs Android distribution</p>
+                    </div>
+                    <div class="chart-container">
+                        <canvas id="deviceTypeChart"></canvas>
+                    </div>
+                </div>
+
+                <div class="chart-card large">
+                    <div class="chart-header">
+                        <h2>Retention Cohort Analysis</h2>
+                        <p>User retention theo cohort (Day 1, 7, 14, 30)</p>
+                    </div>
+                    <div class="chart-container">
+                        <canvas id="retentionCohortChart"></canvas>
+                    </div>
+                </div>
+
+                <div class="chart-card">
+                    <div class="chart-header">
+                        <h2>Top Features Used</h2>
+                        <p>Tính năng được sử dụng nhiều nhất</p>
+                    </div>
+                    <div class="chart-container">
+                        <canvas id="topFeaturesChart"></canvas>
+                    </div>
+                </div>
+
+                <div class="chart-card">
+                    <div class="chart-header">
+                        <h2>User Engagement Score</h2>
+                        <p>Phân loại user theo mức độ tương tác</p>
+                    </div>
+                    <div class="chart-container">
+                        <canvas id="engagementScoreChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+
+</html>
