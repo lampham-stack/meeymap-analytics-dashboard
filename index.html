@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MeeyMap Analytics Dashboard</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+        <div class="sidebar-header">
+            <h1>🗺️ MeeyMap</h1>
+            <p class="sidebar-subtitle">Analytics Dashboard</p>
+        </div>
+
+        <nav class="sidebar-nav">
+            <a href="#" class="nav-item active" data-page="overview">
+                <span class="nav-icon">📊</span>
+                <span class="nav-text">Overview</span>
+            </a>
+            <a href="#" class="nav-item" data-page="marketing">
+                <span class="nav-icon">📈</span>
+                <span class="nav-text">Marketing Insights</span>
+            </a>
+            <a href="#" class="nav-item" data-page="sales">
+                <span class="nav-icon">💼</span>
+                <span class="nav-text">Sales Analytics</span>
+            </a>
+        </nav>
+
+        <div class="sidebar-footer">
+            <div class="date-selector-wrapper">
+                <label for="dateRange">Time Range</label>
+                <select id="dateRange" class="date-selector">
+                    <option value="7">Last 7 days</option>
+                    <option value="30" selected>Last 30 days</option>
+                    <option value="90">Last 90 days</option>
+                    <option value="365">Last year</option>
+                </select>
+            </div>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Overview Page -->
+        <div id="overview-page" class="page-content active">
+            <header class="page-header">
+                <h1>Overview Dashboard</h1>
+                <p class="page-subtitle">Tổng quan hiệu suất marketing & performance</p>
+            </header>
+
+            <!-- Key Business Metrics -->
+            <section class="section">
+                <div class="metrics-grid">
+                    <div class="metric-card primary">
+                        <div class="metric-icon">💰</div>
+                        <div class="metric-content">
+                            <p class="metric-label">Tổng Doanh Thu</p>
+                            <h3 class="metric-value">₫2,450M</h3>
+                            <div class="metric-change positive">
+                                <span class="arrow">↑</span>
+                                <span>+18.5%</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="metric-card">
+                        <div class="metric-icon">📈</div>
+                        <div class="metric-content">
+                            <p class="metric-label">Doanh Thu Hàng Tháng</p>
+                            <h3 class="metric-value">₫815M</h3>
+                            <div class="metric-change positive">
+                                <span class="arrow">↑</span>
+                                <span>+12.3%</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="metric-card">
+                        <div class="metric-icon">👥</div>
+                        <div class="metric-content">
+                            <p class="metric-label">Khách Hàng Đang Dùng</p>
+                            <h3 class="metric-value">3,247</h3>
+                            <div class="metric-change positive">
+                                <span class="arrow">↑</span>
+                                <span>+8.2%</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="metric-card">
+                        <div class="metric-icon">🔄</div>
+                        <div class="metric-content">
+                            <p class="metric-label">Tỷ Lệ Rời Đi</p>
+                            <h3 class="metric-value">3.2%</h3>
+                            <div class="metric-change positive">
+                                <span class="arrow">↓</span>
+                                <span>-1.1%</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="metric-card">
+                        <div class="metric-icon">💸</div>
+                        <div class="metric-content">
+                            <p class="metric-label">Chi Phí Thu Khách</p>
+                            <h3 class="metric-value">₫450K</h3>
+                            <div class="metric-change positive">
+                                <span class="arrow">↓</span>
+                                <span>-5.4%</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="metric-card">
+                        <div class="metric-icon">⭐</div>
+                        <div class="metric-content">
+                            <p class="metric-label">Giá Trị Khách Hàng</p>
+                            <h3 class="metric-value">₫2,850K</h3>
+                            <div class="metric-change positive">
+                                <span class="arrow">↑</span>
+                                <span>+9.8%</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="metric-card highlight">
+                        <div class="metric-icon">🎯</div>
+                        <div class="metric-content">
+                            <p class="metric-label">Hiệu Suất Đầu Tư</p>
+                            <h3 class="metric-value">6.3x</h3>
+                            <div class="metric-change positive">
+                                <span class="arrow">↑</span>
+                                <span>+15.2%</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="metric-card">
+                        <div class="metric-icon">📱</div>
+                        <div class="metric-content">
+                            <p class="metric-label">Dùng Thử Mới</p>
+                            <h3 class="metric-value">542</h3>
+                            <div class="metric-change positive">
+                                <span class="arrow">↑</span>
+                                <span>+22.1%</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Charts Row 1 -->
+            <section class="section">
+                <div class="section-header">
+                    <h2>Budget Distribution & Performance</h2>
+                </div>
+                <div class="charts-row">
+                    <div class="chart-card">
+                        <h3>Phân Bổ Spend Theo Channel</h3>
+                        <p class="chart-subtitle">Budget distribution</p>
+                        <canvas id="spendDistributionChart"></canvas>
+                    </div>
+                    <div class="chart-card">
+                        <h3>Meey ID Theo Channel</h3>
+                        <p class="chart-subtitle">Performance comparison</p>
+                        <canvas id="meeyIdChart"></canvas>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Charts Row 2 -->
+            <section class="section">
+                <div class="charts-row">
+                    <div class="chart-card wide">
+                        <h3>Revenue Trend Over Time</h3>
+                        <p class="chart-subtitle">30 ngày gần nhất - Stacked area chart</p>
+                        <canvas id="revenueTrendChart"></canvas>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Charts Row 3 -->
+            <section class="section">
+                <div class="charts-row">
+                    <div class="chart-card">
+                        <h3>ROAS Comparison</h3>
+                        <p class="chart-subtitle">Return on Ad Spend by channel</p>
+                        <canvas id="roasChart"></canvas>
+                    </div>
+                    <div class="chart-card">
+                        <h3>Organic vs Paid Performance</h3>
+                        <p class="chart-subtitle">So sánh hiệu quả</p>
+                        <canvas id="organicPaidChart"></canvas>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Marketing Insights Page -->
+        <div id="marketing-page" class="page-content">
+            <header class="page-header">
+                <h1>Marketing Insights</h1>
+                <p class="page-subtitle">Phễu marketing & phân tích demographic</p>
+            </header>
+
+            <!-- Marketing Funnel -->
+            <section class="section">
+                <div class="section-header">
+                    <h2>Marketing Funnel</h2>
+                    <p class="section-subtitle">Impression → Reach → Traffic → Lead → Conversion → Revenue</p>
+                </div>
+
+                <div class="funnel-container">
+                    <div class="funnel-stage">
+                        <div class="funnel-bar"
+                            style="width: 100%; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+                            <div class="funnel-content">
+                                <h4>Impressions</h4>
+                                <p class="funnel-value">5,245,000</p>
+                                <p class="funnel-rate">100%</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="funnel-arrow">↓</div>
+
+                    <div class="funnel-stage">
+                        <div class="funnel-bar"
+                            style="width: 85%; background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
+                            <div class="funnel-content">
+                                <h4>Reach</h4>
+                                <p class="funnel-value">3,892,000</p>
+                                <p class="funnel-rate">74.2% Reach Rate</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="funnel-arrow">↓</div>
+
+                    <div class="funnel-stage">
+                        <div class="funnel-bar"
+                            style="width: 70%; background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);">
+                            <div class="funnel-content">
+                                <h4>Traffic</h4>
+                                <p class="funnel-value">147,000</p>
+                                <p class="funnel-rate">2.8% CTR</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="funnel-arrow">↓</div>
+
+                    <div class="funnel-stage">
+                        <div class="funnel-bar"
+                            style="width: 55%; background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);">
+                            <div class="funnel-content">
+                                <h4>Lead</h4>
+                                <p class="funnel-value">8,820</p>
+                                <p class="funnel-rate">6.0% Lead Rate</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="funnel-arrow">↓</div>
+
+                    <div class="funnel-stage">
+                        <div class="funnel-bar"
+                            style="width: 40%; background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);">
+                            <div class="funnel-content">
+                                <h4>Conversion</h4>
+                                <p class="funnel-value">1,764</p>
+                                <p class="funnel-rate">20.0% Conv. Rate</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="funnel-arrow">↓</div>
+
+                    <div class="funnel-stage">
+                        <div class="funnel-bar"
+                            style="width: 30%; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+                            <div class="funnel-content">
+                                <h4>Revenue (M)</h4>
+                                <p class="funnel-value">₫2,450M</p>
+                                <p class="funnel-rate">Avg. ₫1.39M/customer</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Marketing Charts -->
+            <section class="section">
+                <div class="charts-row">
+                    <div class="chart-card">
+                        <h3>Device Breakdown</h3>
+                        <p class="chart-subtitle">Phân bổ theo thiết bị</p>
+                        <canvas id="deviceChart"></canvas>
+                    </div>
+                    <div class="chart-card">
+                        <h3>Regional Performance</h3>
+                        <p class="chart-subtitle">Top regions by impressions</p>
+                        <canvas id="regionChart"></canvas>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section">
+                <div class="charts-row">
+                    <div class="chart-card">
+                        <h3>Age Demographics</h3>
+                        <p class="chart-subtitle">Users & Conversions by age group</p>
+                        <canvas id="ageChart"></canvas>
+                    </div>
+                    <div class="chart-card">
+                        <h3>Channel Performance Radar</h3>
+                        <p class="chart-subtitle">Multi-metric comparison</p>
+                        <canvas id="radarChart"></canvas>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Top Performing Campaigns TABLE -->
+            <section class="section">
+                <div class="section-header">
+                    <h2>Top Performing Campaigns</h2>
+                    <p class="section-subtitle">Chiến dịch hiệu quả nhất</p>
+                </div>
+
+                <div class="campaigns-table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>XẾP HẠNG</th>
+                                <th>TÊN CHIẾN DỊCH</th>
+                                <th>CHI PHÍ</th>
+                                <th>DOANH THU</th>
+                                <th>HIỆU SUẤT</th>
+                                <th>CHUYỂN ĐỔI</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="top-campaign">
+                                <td><span class="rank-badge gold">🥇 #1</span></td>
+                                <td><strong>Facebook - Retargeting Q1</strong></td>
+                                <td>₫45M</td>
+                                <td>₫225M</td>
+                                <td><span class="performance-badge excellent">5.0x</span></td>
+                                <td>1,250</td>
+                            </tr>
+                            <tr>
+                                <td><span class="rank-badge silver">🥈 #2</span></td>
+                                <td><strong>Google Search - Brand</strong></td>
+                                <td>₫32M</td>
+                                <td>₫160M</td>
+                                <td><span class="performance-badge excellent">5.0x</span></td>
+                                <td>890</td>
+                            </tr>
+                            <tr>
+                                <td><span class="rank-badge bronze">🥉 #3</span></td>
+                                <td><strong>TikTok - Awareness</strong></td>
+                                <td>₫28M</td>
+                                <td>₫112M</td>
+                                <td><span class="performance-badge good">4.0x</span></td>
+                                <td>620</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+        </div>
+
+        <!-- Sales Analytics Page -->
+        <div id="sales-page" class="page-content">
+            <header class="page-header">
+                <h1>Sales Analytics</h1>
+                <p class="page-subtitle">Phân tích sản phẩm & gói dịch vụ</p>
+            </header>
+
+            <!-- Product Package Performance -->
+            <section class="section">
+                <div class="section-header">
+                    <h2>Product Package Performance</h2>
+                    <p class="section-subtitle">3 gói sản phẩm chính</p>
+                </div>
+
+                <div class="packages-grid">
+                    <!-- Basic Package -->
+                    <div class="package-card">
+                        <div class="package-header basic">
+                            <h3>Basic Plan</h3>
+                            <p class="package-price">₫199K/tháng</p>
+                        </div>
+                        <div class="package-stats">
+                            <div class="package-stat">
+                                <span class="label">Active Subscriptions</span>
+                                <span class="value">1,245</span>
+                            </div>
+                            <div class="package-stat">
+                                <span class="label">Monthly Revenue</span>
+                                <span class="value">₫248M</span>
+                            </div>
+                            <div class="package-stat">
+                                <span class="label">Conversion Rate</span>
+                                <span class="value">42.5%<span class="percentage">↑ +5.2%</span></span>
+                            </div>
+                            <div class="package-stat">
+                                <span class="label">Avg. Churn</span>
+                                <span class="value">4.2%</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Standard Package -->
+                    <div class="package-card featured">
+                        <div class="package-header standard">
+                            <span class="popular-badge">🔥 Most Popular</span>
+                            <h3>Standard Plan</h3>
+                            <p class="package-price">₫399K/tháng</p>
+                        </div>
+                        <div class="package-stats">
+                            <div class="package-stat">
+                                <span class="label">Active Subscriptions</span>
+                                <span class="value">1,587</span>
+                            </div>
+                            <div class="package-stat">
+                                <span class="label">Monthly Revenue</span>
+                                <span class="value">₫633M</span>
+                            </div>
+                            <div class="package-stat">
+                                <span class="label">Conversion Rate</span>
+                                <span class="value">38.2%<span class="percentage">↑ +3.8%</span></span>
+                            </div>
+                            <div class="package-stat">
+                                <span class="label">Avg. Churn</span>
+                                <span class="value">2.8%</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Premium Package -->
+                    <div class="package-card">
+                        <div class="package-header premium">
+                            <h3>Premium Plan</h3>
+                            <p class="package-price">₫799K/tháng</p>
+                        </div>
+                        <div class="package-stats">
+                            <div class="package-stat">
+                                <span class="label">Active Subscriptions</span>
+                                <span class="value">415</span>
+                            </div>
+                            <div class="package-stat">
+                                <span class="label">Monthly Revenue</span>
+                                <span class="value">₫332M</span>
+                            </div>
+                            <div class="package-stat">
+                                <span class="label">Conversion Rate</span>
+                                <span class="value">19.3%<span class="percentage">↑ +2.1%</span></span>
+                            </div>
+                            <div class="package-stat">
+                                <span class="label">Avg. Churn</span>
+                                <span class="value">1.5%</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Product Charts -->
+            <section class="section">
+                <div class="charts-row">
+                    <div class="chart-card">
+                        <h3>Lead to Product Distribution</h3>
+                        <p class="chart-subtitle">Lead mua sản phẩm gì nhiều nhất</p>
+                        <canvas id="leadProductChart"></canvas>
+                    </div>
+                    <div class="chart-card">
+                        <h3>Top Products by Revenue</h3>
+                        <p class="chart-subtitle">Sản phẩm nào win nhất</p>
+                        <canvas id="topProductsChart"></canvas>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section">
+                <div class="charts-row">
+                    <div class="chart-card">
+                        <h3>Product Conversion Rates</h3>
+                        <p class="chart-subtitle">Tỷ lệ chuyển đổi theo sản phẩm</p>
+                        <canvas id="conversionRatesChart"></canvas>
+                    </div>
+                    <div class="chart-card">
+                        <h3>Product Focus Recommendations</h3>
+                        <p class="chart-subtitle">Nên tập trung vào sản phẩm nào</p>
+                        <canvas id="focusRecommendChart"></canvas>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Product Recommendations Table -->
+            <section class="section">
+                <div class="section-header">
+                    <h2>Product Focus Recommendations</h2>
+                    <p class="section-subtitle">Nên tập trung vào sản phẩm nào</p>
+                </div>
+
+                <div class="recommendations-table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>PRODUCT</th>
+                                <th>PRIORITY</th>
+                                <th>LEADS</th>
+                                <th>REVENUE</th>
+                                <th>CONV RATE</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Standard Plan</strong></td>
+                                <td><span class="priority high">🔥 High</span></td>
+                                <td>1,866</td>
+                                <td>₫633M</td>
+                                <td>38.2%</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Basic Plan</strong></td>
+                                <td><span class="priority high">🔥 High</span></td>
+                                <td>1,502</td>
+                                <td>₫248M</td>
+                                <td>42.5%</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Premium Plan</strong></td>
+                                <td><span class="priority medium">⚡ Medium</span></td>
+                                <td>4,033</td>
+                                <td>₫332M</td>
+                                <td>19.3%</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
